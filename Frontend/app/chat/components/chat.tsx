@@ -75,6 +75,7 @@ export function Chat({ id, initialMessages = [] }: ChatProps) {
             append={append}
             value={input}
             onChange={handleInputChange}
+            setInput={setInput}
             handleSubmit={customHandleSubmit}
             isLoading={status === 'submitted'}
             modelState={{

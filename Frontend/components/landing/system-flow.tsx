@@ -4,43 +4,43 @@ import Image from "next/image"
 
 const flowSteps = [
   {
-    title: "Clone & Deploy",
-    description: "Get started in seconds by cloning the repository and deploying it to Vercel with one click.",
+    title: "Data Ingestion",
+    description: "Securely connect your data sources. We support SQL, NoSQL, PDFs, and API endpoints.",
     icon: GitBranch,
     gradient: "from-sky-500 via-cyan-500 to-blue-500",
     shadowColor: "shadow-sky-500/25",
   },
   {
-    title: "Configure AI Provider",
-    description: "Connect your preferred AI model provider, such as OpenAI, Anthropic, or Google.",
+    title: "Model Configuration",
+    description: "Select from top-tier models (GPT-4, Claude 3, Gemini) tailored to your specific use case.",
     icon: Settings2,
     gradient: "from-blue-500 via-indigo-500 to-violet-500",
     shadowColor: "shadow-blue-500/25",
   },
   {
-    title: "Customize the UI",
-    description: "Modify the pre-built React components and styles to match your brand and vision.",
+    title: "Personalization",
+    description: "Customize agent behavior, tone, and operational boundaries to match your brand voice.",
     icon: Component,
     gradient: "from-green-500 via-emerald-500 to-teal-500",
     shadowColor: "shadow-green-500/25",
   },
   {
-    title: "Build Your Features",
-    description: "Extend the template with your unique AI-powered features and business logic.",
+    title: "Neural Processing",
+    description: "Our proprietary engine analyzes complex queries to deliver accurate, context-aware responses.",
     icon: Sparkles,
     gradient: "from-purple-500 via-violet-500 to-indigo-500",
     shadowColor: "shadow-purple-500/25",
   },
   {
-    title: "Integrate Your Data",
-    description: "Connect your database and other data sources to create a truly dynamic application.",
+    title: "Action Execution",
+    description: "Agents can perform tasks, call APIs, and automate workflows based on your instructions.",
     icon: Bot,
     gradient: "from-orange-500 via-amber-500 to-yellow-500",
     shadowColor: "shadow-orange-500/25",
   },
   {
-    title: "Launch Your App",
-    description: "Deploy your production-ready AI application to a global audience on Vercel.",
+    title: "Insight Delivery",
+    description: "Receive structured outputs, visualized data, and comprehensive reports instantly.",
     icon: Rocket,
     gradient: "from-red-500 via-rose-500 to-pink-500",
     shadowColor: "shadow-red-500/25",
@@ -57,13 +57,13 @@ export function SystemFlow() {
         className="text-center"
       >
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          How It{" "}
+          System{" "}
           <span className="bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-            Works
+            Architecture
           </span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-          Follow these simple steps to get your AI-powered application up and running with the Vercel AI SDK template.
+          A robust, scalable pipeline designed to transform raw data into actionable intelligence.
         </p>
       </motion.div>
 
@@ -106,8 +106,8 @@ export function SystemFlow() {
       >
         <div className="relative rounded-2xl bg-gradient-to-b from-muted/50 to-muted p-2 ring-1 ring-foreground/10 backdrop-blur-3xl dark:from-muted/30 dark:to-background/80">
           <Image
-            src="https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png"
-            alt="Vercel AI SDK Development Flow"
+            src="/architecture.png"
+            alt="Sampada Ai Architecture"
             width={1200}
             height={630}
             quality={100}

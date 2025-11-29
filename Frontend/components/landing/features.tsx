@@ -7,38 +7,38 @@ import { cn } from "@/lib/utils"
 
 const features = [
   {
-    title: "AI SDK Integration",
-    info: "Seamlessly integrate with the Vercel AI SDK for powerful, scalable AI applications.",
+    title: "Cognitive Processing",
+    info: "Advanced neural networks that understand context, sentiment, and intent for superior interaction.",
     icon: Zap,
     gradient: "from-pink-500 to-rose-500",
   },
   {
-    title: "Streaming & RSC Support",
-    info: "Leverage React Server Components for efficient data fetching and UI streaming.",
+    title: "Real-time Analytics",
+    info: "Process data streams instantly with our high-performance engine, delivering insights as they happen.",
     icon: Server,
     gradient: "from-blue-500 to-cyan-500",
   },
   {
-    title: "Ready-to-Use Chat UI",
-    info: "A pre-built, customizable chat interface to get you started in minutes.",
+    title: "Enterprise Security",
+    info: "Bank-grade encryption and role-based access control to ensure your proprietary data stays safe.",
     icon: MessagesSquare,
     gradient: "from-green-500 to-emerald-500",
   },
   {
-    title: "Extensible & Customizable",
-    info: "Easily modify and extend the template to fit your unique application needs.",
+    title: "Custom Knowledge Base",
+    info: "Train Sampada Ai on your specific documents and data to create a truly personalized assistant.",
     icon: Settings2,
     gradient: "from-purple-500 to-violet-500",
   },
   {
-    title: "Voice-Enabled Interactions",
-    info: "Integrate voice commands and speech-to-text for a hands-free user experience.",
+    title: "Voice Command Interface",
+    info: "Hands-free operation with our state-of-the-art speech recognition and synthesis engine.",
     icon: Mic,
     gradient: "from-red-500 to-rose-500",
   },
   {
-    title: "Component-Based Architecture",
-    info: "Built with Shadcn/UI for a modern, component-driven development workflow.",
+    title: "Seamless Integration",
+    info: "Connects effortlessly with your existing CRM, ERP, and workflow tools via robust APIs.",
     icon: Component,
     gradient: "from-indigo-500 to-purple-500",
   },
@@ -61,9 +61,9 @@ const item = {
 
 export function Features() {
   return (
-    <section className="py-20 sm:py-24 lg:py-32">
+    <section className="py-20 sm:py-24 lg:py-32" id="features">
       <div className="text-center">
-        <SectionBadge title="Features" />
+        <SectionBadge title="Capabilities" />
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export function Features() {
           transition={{ duration: 0.5 }}
           className="mt-8 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl"
         >
-          Why Use This Vercel AI SDK Template?
+          Why Choose Sampada Ai?
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export function Features() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
         >
-          Discover the powerful capabilities that make this template the perfect starting point for your next AI project.
+          Discover the powerful capabilities that make Sampada Ai the definitive solution for intelligent automation.
         </motion.p>
       </div>
 

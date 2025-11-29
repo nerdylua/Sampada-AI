@@ -2,37 +2,79 @@ import { z } from 'zod';
 import { tool } from 'ai';
 
 const generateChartParameters = z.object({
-  chartType: z
-    .enum(['bar', 'line', 'pie'])
-    .describe('The type of chart to generate.'),
-  data: z
-    .array(
-      z.object({
-        label: z.string().describe('The label for a data point.'),
-        value: z.number().describe('The value for a data point.'),
-      }),
-    )
-    .describe('The data for the chart, as an array of objects.'),
-  xAxis: z
-    .string()
-    .describe(
-      "The key from the data objects to use for the X-axis. This must be 'label'.",
-    ),
-  yAxis: z
-    .array(z.string())
-    .describe(
-      "The key(s) from the data objects to use for the Y-axis. This must be 'value'.",
-    ),
-  title: z.string().optional().describe('The title of the chart.'),
-  description: z.string().optional().describe('A description of the chart.'),
+  company_name: z.string().describe('The name of the company to generate a chart for.'),
 });
 
 export const generateChart = tool({
-  description: 'Generate a chart for data visualization. Use this to display data in a graphical format.',
+  description: 'Generate a chart for a company by fetching data from the screener API.',
   parameters: generateChartParameters,
-  execute: async (args: z.infer<typeof generateChartParameters>) => {
-    // This tool doesn't perform a server-side action.
-    // It returns its arguments so the UI can render the chart.
-    return args;
+  execute: async ({ company_name }) => {
+    try {
+      const response = await fetch('http://127.0.0.1:8003/accelerated_chart_data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ company_name }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch chart data: ${response.statusText}`);
+      }
+
+      const chartData = await response.json();
+      
+      // Transform to QuickChart.io format
+      const labels = chartData.data.map((d: any) => d.label);
+      const values = chartData.data.map((d: any) => d.value);
+      
+      const quickChartConfig = {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: chartData.title || 'Price',
+            data: values,
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.1,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: chartData.title || 'Chart'
+            },
+            legend: {
+              display: true
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: false
+            }
+          }
+        }
+      };
+      
+      // Generate QuickChart URL
+      const chartUrl = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(quickChartConfig))}`;
+      
+      return {
+        chartType: chartData.chartType,
+        data: chartData.data,
+        xAxis: chartData.xAxis,
+        yAxis: chartData.yAxis,
+        title: chartData.title,
+        description: chartData.description,
+        // chartUrl: chartUrl
+      };
+    } catch (error) {
+      console.error('Error generating chart:', error);
+      return { error: 'Failed to generate chart data.' };
+    }
   },
 });

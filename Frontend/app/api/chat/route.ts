@@ -5,6 +5,7 @@ import { generateChart } from '@/app/chat/lib/ai/tools/generate-chart';
 import { tavilySearchTool } from '@/app/chat/lib/ai/tools/tavily-search';
 import { generateImage } from '@/app/chat/lib/ai/tools/generate-image';
 import { makeApiRequestTool } from '@/app/chat/lib/ai/tools/make-api-request';
+import { screenerQueryAgent } from '@/app/chat/lib/ai/tools/screener-query-agent';
 import { myProvider } from '@/app/chat/lib/ai/providers/providers';
 import { getUser } from '@/app/chat/hooks/get-user';
 import { getAllMCPTools } from '@/app/chat/lib/simple-mcp-manager';
@@ -38,11 +39,12 @@ export async function POST(req: Request) {
       system: systemPrompt,
       messages,
       tools: {
-        querySupabase: querySupabaseTool,
+        // querySupabase: querySupabaseTool,
         generateChart: generateChart,
         tavilySearch: tavilySearchTool,
-        generateImage: generateImage,
+        // generateImage: generateImage,
         makeApiRequest: makeApiRequestTool,
+        screenerQueryAgent: screenerQueryAgent,
         ...mcpTools, 
       },
       maxSteps: 10, 

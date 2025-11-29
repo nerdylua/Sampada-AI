@@ -4,25 +4,25 @@ import { ArrowRight } from "lucide-react"
 
 const features = [
   {
-    title: "AI Chat Interface",
-    description: "Engage users with a fully-featured, streaming-first chat interface. Built with the Vercel AI SDK, it supports text, voice, and interactive components out of the box.",
-    image: "https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png",
-    darkImage: "https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png",
-    alt: "AI Chat Interface",
+    title: "Advanced Conversational Interface",
+    description: "Engage with an AI that understands nuance. Our interface supports multi-modal interaction including text, voice, and rich media, designed for professional workflows.",
+    image: "/feature-chat.png",
+    darkImage: "/feature-chat-dark.png",
+    alt: "Advanced Conversational Interface",
   },
   {
-    title: "Server-side AI State Management",
-    description: "The SDK manages AI state on the server, including loading and error states, so you can focus on building your application's features.",
-    image: "https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png",
-    darkImage: "https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png",
-    alt: "Server-side AI State Management",
+    title: "Context-Aware Memory",
+    description: "Sampada Ai remembers previous interactions and context, allowing for continuous, meaningful conversations that evolve with your project needs.",
+    image: "/feature-memory.png",
+    darkImage: "/feature-memory-dark.png",
+    alt: "Context-Aware Memory",
   },
   {
-    title: "React Server Components (RSCs)",
-    description: "Built on the foundation of RSCs, this template ensures optimal performance by rendering components on the server and streaming them to the client.",
-    image: "https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png",
-    darkImage: "https://raw.githubusercontent.com/vercel/ai-sdk/main/packages/core/static/og-image.png",
-    alt: "React Server Components",
+    title: "Enterprise Scalability",
+    description: "Built on a robust serverless architecture, Sampada Ai scales effortlessly from individual use to enterprise-wide deployment without compromising performance.",
+    image: "/feature-scale.png",
+    darkImage: "/feature-scale-dark.png",
+    alt: "Enterprise Scalability",
   },
 ]
 
@@ -36,13 +36,13 @@ export function FeatureDetails() {
         className="text-center"
       >
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          Explore the Core{" "}
+          Experience the{" "}
           <span className="bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-            Components
+            Difference
           </span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-          Discover the key features that power this Vercel AI SDK template, from the chat interface to server-side state management.
+          See how Sampada Ai transforms your daily operations with cutting-edge technology and intuitive design.
         </p>
       </motion.div>
 

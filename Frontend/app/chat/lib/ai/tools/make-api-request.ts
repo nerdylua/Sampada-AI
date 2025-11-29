@@ -2,7 +2,7 @@ import { tool } from 'ai';
 import { z } from 'zod';
 
 export const makeApiRequestTool = tool({
-  description: 'Make an HTTP API request to a specified URL. Supports GET, POST, PUT, DELETE, etc.',
+  description: 'Make an HTTP API request to a specified URL. Supports GET, POST, PUT, DELETE, etc. The screener API is available at http://127.0.0.1:8080. The available endpoints are 1. POST /accelerated_concall :-this gets the concall of that company , POST /accelerated_peers : This gets peers of that company , POST /accelerated_profit_loss : This gets the profit and loss of the company , POST /accelerated_quarterly_results :- This gets the quarterly results of that company , POST /accelerated_announcements :- This gets the announcements of that company , body for all these endpoints have company_name : str' ,
   parameters: z.object({
     url: z.string().describe('The URL to make the request to.'),
     method: z.enum(['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS']).describe('The HTTP method to use.'),

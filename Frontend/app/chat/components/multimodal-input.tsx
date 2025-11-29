@@ -1,11 +1,12 @@
 "use client";
 
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useCallback } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ArrowUp, Loader2 } from "lucide-react";
+import { ArrowUp, Loader2, Mic, Square } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SuggestedActions } from "./suggested-actions";
+import { useVoiceRecorder } from "../hooks/use-voice-recorder";
 
 import { models } from "@/app/chat/lib/ai/providers/providers";
 import { ModelSelector } from "./model-selector";
@@ -17,6 +18,7 @@ interface MultimodalInputProps {
   append: (message: Message) => Promise<string | null | undefined>;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  setInput: (value: string) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
   modelState: {
@@ -31,11 +33,28 @@ export function MultimodalInput({
   append,
   value,
   onChange,
+  setInput,
   handleSubmit,
   isLoading,
   modelState,
 }: MultimodalInputProps) {
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Handle transcription from voice input
+  const handleTranscription = useCallback(
+    (text: string) => {
+      // Append transcribed text to existing input
+      const newValue = value ? `${value} ${text}` : text;
+      setInput(newValue);
+    },
+    [value, setInput]
+  );
+
+  const { isRecording, isProcessing, startRecording, stopRecording, error } =
+    useVoiceRecorder({
+      onTranscription: handleTranscription,
+      silenceTimeout: 2000,
+    });
 
   return (
     <form
@@ -75,6 +94,39 @@ export function MultimodalInput({
         </div>
 
         <div className="absolute bottom-2 right-2 flex items-center gap-2">
+          {/* Voice Input Button */}
+          {isProcessing ? (
+            <Button
+              type="button"
+              disabled
+              className="rounded-full h-fit border dark:border-zinc-600"
+              title="Processing audio..."
+            >
+              <Loader2 className="h-4 w-4 animate-spin" />
+            </Button>
+          ) : isRecording ? (
+            <Button
+              type="button"
+              onClick={stopRecording}
+              className="rounded-full h-fit border border-red-500 bg-red-500/10 hover:bg-red-500/20 text-red-500"
+              title="Stop recording"
+            >
+              <Square className="h-4 w-4 fill-current" />
+            </Button>
+          ) : (
+            <Button
+              type="button"
+              onClick={startRecording}
+              disabled={isLoading}
+              variant="ghost"
+              className="rounded-full h-fit border dark:border-zinc-600 hover:bg-muted"
+              title="Voice input"
+            >
+              <Mic className="h-4 w-4" />
+            </Button>
+          )}
+
+          {/* Send Button */}
           {isLoading ? (
             <Button
               type="button"
@@ -85,8 +137,8 @@ export function MultimodalInput({
           ) : (
             <Button
               type="submit"
-              disabled={!value.trim()}
-              className="rounded-full  h-fit border dark:border-zinc-600"
+              disabled={!value.trim() || isRecording}
+              className="rounded-full h-fit border dark:border-zinc-600"
             >
               <ArrowUp className="h-4 w-4" />
             </Button>

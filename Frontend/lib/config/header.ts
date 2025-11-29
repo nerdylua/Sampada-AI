@@ -10,20 +10,24 @@ export interface HeaderLink {
 export interface HeaderConfig {
   brand: {
     title: string
-    icon: string
+    icon: "shield" | "logo"
   }
   navigationLinks: HeaderLink[]
 }
 
 export const headerConfig: HeaderConfig = {
   brand: {
-    title: "HackRx",
-    icon: "/logos/hackrx-logo.webp"
+    title: "Sampada AI",
+    icon: "shield"
   },
   navigationLinks: [
     { 
     href: "/", 
     label: "Home" 
+  },
+  { 
+    href: "/dashboard", 
+    label: "Dashboard" 
   },
   { 
     href: "/chat", 

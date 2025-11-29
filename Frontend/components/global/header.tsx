@@ -4,11 +4,11 @@ import * as React from "react"
 import Link from "next/link"
 import { ModeToggle } from "./theme-switcher"
 import { usePathname } from "next/navigation"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { NavigationMobile } from "./header-mobile"
 import { motion, useAnimationControls, LayoutGroup } from "framer-motion"
 import { HeaderConfig } from "@/lib/config/header"
+import { Shield } from "lucide-react"
 
 interface HeaderProps {
   config: HeaderConfig
@@ -81,7 +81,9 @@ export function Header({ config }: HeaderProps) {
                 : "h-16"
             )}>
               <Link href="/" className="group relative flex items-center gap-3">
-                <Image src={config.brand.icon} alt={config.brand.title} width={24} height={24} />
+                {config.brand.icon === "shield" && (
+                  <Shield className="h-6 w-6 text-emerald-500" />
+                )}
                 <span className="font-medium tracking-tight">{config.brand.title}</span>
               </Link>
 

@@ -3,7 +3,6 @@
 import { Hero } from "@/components/landing/hero"
 import { Features } from "@/components/landing/features"
 import { SystemFlow } from "@/components/landing/system-flow"
-import { FeatureDetails } from "@/components/landing/feature-details"
 import { cn } from "@/lib/utils"
 import { GridPattern } from "@/components/ui/grid-pattern"
 import { InstallPrompt } from "@/components/global/install-prompt"
@@ -36,7 +35,6 @@ export default function LandingPage() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Hero />
         <SystemFlow />
-        <FeatureDetails />
         <Features />
         </div>
     </main>

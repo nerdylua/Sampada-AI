@@ -8,8 +8,8 @@ import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'OmniAgent',
-  description: 'OmniAgent',
+  title: 'Sampada AI',
+  description: 'Sampada AI',
 }
 
 export default function RootLayout({

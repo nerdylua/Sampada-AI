@@ -3,7 +3,7 @@ import { SidebarConfig } from "@/components/global/app-sidebar";
 
 const sidebarConfig: SidebarConfig = {
   brand: {
-    title: "HackRX API",
+    title: "Sampada AI",
     icon: Icons.shield,
     href: "/"
   },
