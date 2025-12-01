@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "eslint",
     "mcp:playwright": "npx @playwright/mcp@latest --port 8001 --host 0.0.0.0",
-    "mcp:computer": "uv --directory C:\\Users\\avina\\Projects\\RVCE\\2025\\windows-mcp run main.py",
     "mcp:all": "concurrently \"npm run mcp:playwright\" \"npm run mcp:computer\""
   },
   "dependencies": {

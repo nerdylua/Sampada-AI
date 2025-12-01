@@ -42,7 +42,7 @@ This project ships an MCP server for tool-style integrations. It’s separate fr
 python run_mcp.py
 ```
 
-By default it listens on port 8001 (see `mcp_server/config/mcp_settings.py`).
+By default it listens on port 8000 (see `mcp_server/config/mcp_settings.py`). Override with `MCP_SERVER_PORT` env var if needed.
 
 ## Decision Tree Builder
 
