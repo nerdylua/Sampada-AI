@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 # Import from base directory
 from scraper import login, login_with_network_capture, find_company_codes, get_charts, get_pe_charts, get_peers, get_quarterly_results, get_profit_loss, get_announcements, get_concalls, run_custom_query, get_chart_data
 from query_service import ScreenerQueryService
-from credentials import google_api
+from credentials import google_api, openai_api, llm_provider
 from schemas import RequestModel
 
 app = FastAPI(title="Unified Screener API", version="1.0.0")
@@ -44,8 +44,17 @@ async def log_requests(request: Request, call_next):
 # Global driver instance
 driver = None
 
-# Initialize query service
-query_service = ScreenerQueryService(api_key=google_api)
+def get_driver():
+    global driver
+    if driver is None:
+        logger.info("Driver not initialized. Logging in...")
+        driver = login()
+        logger.info("Driver initialized and logged in successfully")
+    return driver
+
+api_key = openai_api if llm_provider == "openai" else google_api
+query_service = ScreenerQueryService(api_key=api_key, provider=llm_provider, driver_getter=get_driver)
+logger.info(f"Query service initialized with provider: {llm_provider} (using persistent driver)")
 
 class QueryRequest(BaseModel):
     query: str
@@ -53,15 +62,6 @@ class QueryRequest(BaseModel):
 class CompanyRequest(BaseModel):
     company_name: str
     company_id: Optional[int] = None
-
-def get_driver():
-    global driver
-    if driver is None:
-        print("Driver not initialized. Logging in...")
-        driver = login()
-    return driver
-
-# ============= Root =============
 
 @app.get("/")
 def read_root():

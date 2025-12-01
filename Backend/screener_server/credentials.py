@@ -1,3 +1,5 @@
 email = "screener_mail"
 password = "screener_password"
-google_api = "your api key "
+google_api = "your_google_api_key"
+openai_api = "your_openai_api_key"
+llm_provider = "openai"
