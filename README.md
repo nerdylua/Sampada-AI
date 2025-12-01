@@ -2,10 +2,9 @@
 
 **Sampada AI** is a financial agentic copilot powered by the Model Context Protocol (MCP) and RAG tools. It combines real-time market intelligence, document understanding, and autonomous computer-use capabilities into a unified AI assistant for financial analysis and decision-making.
 
-The system orchestrates three MCP-enabled backend services:
-- **RAG MCP Server** — Structure-aware document Q&A for insurance policies, financial reports, and regulatory filings
-- **Computer MCP Server** — Autonomous desktop actions: file I/O, PDF extraction, and live Notepad streaming for report generation
-- **Screener Server** — Real-time stock data, charts, peer comparisons, and quarterly results from screener.in
+## Demo
+
+[Watch on YouTube](https://youtu.be/dmaqJURPUNA)
 
 ## Key Features
 
@@ -15,12 +14,6 @@ The system orchestrates three MCP-enabled backend services:
 - **Computer Automation** — Stream analysis reports directly to Notepad, read PDFs/bills, automate keyboard input
 - **Multi-Provider LLM Support** — Switch between OpenAI, Gemini, Groq, Cerebras, OpenRouter, or local LM Studio models
 - **Decision Tree Generation** — Auto-generate policy decision trees with Mermaid visualization
-
-## Demo
-
-[Watch on YouTube](https://youtu.be/dmaqJURPUNA)
-
----
 
 ## Repository Structure
 
